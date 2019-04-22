@@ -22,6 +22,7 @@ public class EchartsController {
     public Map count() {
         GoEasy goEasy = new GoEasy("http(s)://rest-hangzhou.goeasy.io", "BC-fdbdb55257834c07bb017622f587572f");
         goEasy.publish("", "Hello, GoEasy!");
+        System.out.println(111111111);
         return userService.selectActiveCount();
     }
 
