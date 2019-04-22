@@ -62,6 +62,8 @@
                             // 根据名字对应到相应的系列
                             name: '用户数量',
                             data: content.seriesData
+
+
                         }]
                     })
                 }
