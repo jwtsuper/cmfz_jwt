@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baizhi.dao.AlbumDao">
+    <select id="selectAllAlbum" resultMap="albumResultMap">
+        SELECT
+            t1.id,
+            t1.title,
+            t1.amount,
+            t1.img_path,
+            t1.score,
+            t1.author,
+            t1.board_cast,
+            t1.publish_date,
+            t1.brief,
+            t2.id    AS tid,
+            t2.title AS ttitle,
+            t2.size,
+            t2.duraton,
+            t2.tpublicsh_date,
+            t2.album_id,
+            t2.down_load_path
+        FROM
+            album AS t1
+                LEFT JOIN chapter AS t2 ON t2.album_id = t1.id
+    </select>
+
+
+    <resultMap id="albumResultMap" type="com.baizhi.entity.Album">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="img_path" property="imgPath"/>
+        <result column="brief" property="brief"/>
+        <result column="amount" property="amount"/>
+        <result column="score" property="score"/>
+        <result column="author" property="author"/>
+        <result column="board_cast" property="boardCast"/>
+        <result column="publish_date" property="publishDate"/>
+        <collection property="children" ofType="com.baizhi.entity.Chapter">
+            <result column="tid" property="id"/>
+            <result column="ttitle" property="title"/>
+            <result column="size" property="size"/>
+            <result column="duraton" property="duraton"/>
+            <result column="down_load_path" property="downLoadPath"/>
+            <result column="tpublicsh_date" property="tpublicshDate"/>
+            <result column="album_id" property="albumId"/>
+        </collection>
+
+    </resultMap>
+</mapper>

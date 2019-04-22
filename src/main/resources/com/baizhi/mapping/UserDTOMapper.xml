@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.baizhi.dao.UserDTODao">
+
+    <select id="selectMale" resultMap="userd">
+        select COUNT(*) count,province name
+        from `user`
+        WHERE sex=1
+        GROUP BY province
+    </select>
+
+    <select id="selectFeMale" resultMap="userd">
+        select COUNT(*) count,province name
+        from `user`
+        WHERE sex=0
+        GROUP BY province
+    </select>
+    <resultMap id="userd" type="UserDTO">
+        <result column="count" property="value"/>
+        <result column="name" property="name"/>
+    </resultMap>
+
+</mapper>
