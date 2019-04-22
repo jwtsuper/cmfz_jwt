@@ -69,9 +69,9 @@ public class CmfzJwtApplicationTests {
         }
     }
 
-    @Test
+   /* @Test
     public void test5() {
         int i = userDao.selectActiveCount();
         System.out.println(i);
-    }
+    }*/
 }

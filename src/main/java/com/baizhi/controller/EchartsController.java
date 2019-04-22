@@ -2,7 +2,6 @@ package com.baizhi.controller;
 
 import com.baizhi.service.UserDTOService;
 import com.baizhi.service.UserService;
-import io.goeasy.GoEasy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +19,7 @@ public class EchartsController {
 
     @RequestMapping("userActive")
     public Map count() {
-        GoEasy goEasy = new GoEasy("http(s)://rest-hangzhou.goeasy.io", "BC-fdbdb55257834c07bb017622f587572f");
-        goEasy.publish("", "Hello, GoEasy!");
-        System.out.println(111111111);
+
         return userService.selectActiveCount();
     }
 

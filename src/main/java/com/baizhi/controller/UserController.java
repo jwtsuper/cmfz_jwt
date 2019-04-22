@@ -1,5 +1,6 @@
 package com.baizhi.controller;
 
+import com.alibaba.fastjson.JSONObject;
 import com.baizhi.entity.User;
 import com.baizhi.service.UserService;
 import io.goeasy.GoEasy;
@@ -56,8 +57,11 @@ public class UserController {
         }
         user.setHeadImg(newName);
         userService.insert(user);
-        GoEasy goEasy = new GoEasy("http(s)://rest-hangzhou.goeasy.io", "BC-fdbdb55257834c07bb017622f587572f");
-        goEasy.publish("", "Hello, GoEasy!");
+        Map count = userService.selectActiveCount();
+        String s = JSONObject.toJSONString(count);
+        //不要用https协议
+        GoEasy goEasy = new GoEasy("http://rest-hangzhou.goeasy.io", "BC-fdbdb55257834c07bb017622f587572f");
+        goEasy.publish("useractive", s);
         Map map = new HashMap();
         map.put("flag", true);
         return map;
